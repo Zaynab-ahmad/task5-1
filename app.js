@@ -30,7 +30,7 @@ function updateDisplay() {
   if (operation != null) {
     previousOperandTextElement.innerText = `${previousNum} ${operation}`;  // 
   } else {
-    previousOperandTextElement.innerText = ''; 
+    previousOperandTextElement.innerText = previousNum; 
     }
 }
 //opertaion function
