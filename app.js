@@ -60,7 +60,7 @@ function compute(){
     if (current === 0) {
         currentNum = 'Error'; // Handle division by zero
       } else {
-        currentNum = (prev / current).toString(); // Divide and convert back to string
+        currentNum = (prev / current).toString(); 
       }
       break;
     case'*': 
