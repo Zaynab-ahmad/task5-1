@@ -18,20 +18,31 @@ function appendNum(buttonValue) {
   if (equalsClicked) {     
     // If the equals button was clicked, reset the current number   
     currentNum = '';         
-    equalsClicked = false;}
-
+    equalsClicked = false;
+  }
     // If no operation is selected, continue appending to the current number
   if (operation === undefined) 
     {currentNum += buttonValue;  
   } else {
-
     // If an operation is selected and previousNum is empty, assign currentNum to previousNum
     if (previousNum === '') {
       previousNum = currentNum; 
     }
     currentNum += buttonValue;
-}
+    }
 } 
+
+//opertaion function
+function chooseOperation(operationValue) {
+  if (currentNum === '') return;  
+  // If there is already a previous number, perform the calculation
+  if (previousNum !== '') {
+    compute();  
+  }
+  operation = operationValue;  
+  previousNum = currentNum;  
+  currentNum = '';
+}
 
 // updateDisplay function 
 function updateDisplay() {
@@ -40,36 +51,19 @@ function updateDisplay() {
   if (operation != null) {
     previousOperandTextElement.innerText = `${previousNum} ${operation}`;  // 
   } else {
-<<<<<<< HEAD
     // If no operation is selected, just display the previous number
-=======
->>>>>>> d9504716d01e238f61d9d00f1d6be292ea3622aa
     previousOperandTextElement.innerText = previousNum; 
     }
 }
 
-//opertaion function
-function chooseOperation(operationValue) {
-  if (currentNum === '') return;  
-
-  // If there is already a previous number, perform the calculation
-  if (previousNum !== '') {
-    compute();  
-  }
-
-  operation = operationValue;  
-  previousNum = currentNum;  
-  currentNum = '';
-}
-
-// comput function 
-function compute(){
+// compute function 
+function compute() {
 
    // Parse the previous and current numbers as floating-point numbers
   const prev = parseFloat(previousNum); 
   const current = parseFloat(currentNum);
    
-  switch(operation){
+  switch(operation) {
     case '+':
       currentNum = (prev + current).toString();
       break;
@@ -85,16 +79,16 @@ function compute(){
       break
     case'*': 
     currentNum = (prev * current).toString();
-    break;
-    default:
-      return; }
+    break;   
+    default: return; 
+    }
   
   operation = undefined; 
   previousNum = '';
   // Set equalsClicked to true to indicate that the equals button has been clicked
   equalsClicked = true;
+}
 
-    }
 // allclear function 
 function clear() {
   operation = undefined; 
@@ -104,11 +98,9 @@ function clear() {
 
 // Delete function 
 function deletefun() {
-
   // Remove the last character from the currentNum string
-  // - '0' is the starting index, and '-1' indicates the end, excluding the last character, 
+  // '0' is the starting index, and '-1' indicates the end, excluding the last character, 
   // since negative index counts back from the end of the array.
-
   currentNum = currentNum.slice(0,-1)
 }
 
@@ -128,7 +120,6 @@ operationButtons.forEach(function(button) {
 });
 
 equalsButton.addEventListener('click', function() {
-
   compute();
   updateDisplay();
 });
@@ -137,6 +128,7 @@ deleteButton.addEventListener('click', function() {
   deletefun();
   updateDisplay();
 });
+
 allClearButton.addEventListener('click', function() {
   clear();
   updateDisplay();
