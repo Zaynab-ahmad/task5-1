@@ -40,7 +40,10 @@ function updateDisplay() {
   if (operation != null) {
     previousOperandTextElement.innerText = `${previousNum} ${operation}`;  // 
   } else {
+<<<<<<< HEAD
     // If no operation is selected, just display the previous number
+=======
+>>>>>>> d9504716d01e238f61d9d00f1d6be292ea3622aa
     previousOperandTextElement.innerText = previousNum; 
     }
 }
